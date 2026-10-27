@@ -1,10 +1,10 @@
 <?php
 require_once 'dbConfig.php';
 
-function insertApplication($pdo, $fn, $ln, $email, $phone, $position, $years, $skills) {
-    $sql = "INSERT INTO applications (first_name, last_name, email, phone, position_applied, years_experience, skills)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
-    return $pdo->prepare($sql)->execute([$fn, $ln, $email, $phone, $position, $years, $skills]);
+function insertApplication($pdo, $fn, $ln, $email, $phone, $position, $years, $skills, $portfolio) {
+    $sql = "INSERT INTO applications (first_name, last_name, email, phone, position_applied, years_experience, skills, portfolio)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    return $pdo->prepare($sql)->execute([$fn, $ln, $email, $phone, $position, $years, $skills, $portfolio]);
 }
 
 function getAllApplications($pdo) {
@@ -17,10 +17,10 @@ function getApplicationByID($pdo, $id) {
     return $stmt->fetch();
 }
 
-function updateApplication($pdo, $id, $fn, $ln, $email, $phone, $position, $years, $skills) {
+function updateApplication($pdo, $id, $fn, $ln, $email, $phone, $position, $years, $skills, $portfolio) {
     $sql = "UPDATE applications SET first_name=?, last_name=?, email=?, phone=?,
-            position_applied=?, years_experience=?, skills=? WHERE application_id=?";
-    return $pdo->prepare($sql)->execute([$fn, $ln, $email, $phone, $position, $years, $skills, $id]);
+            position_applied=?, years_experience=?, skills=?, portfolio=? WHERE application_id=?";
+    return $pdo->prepare($sql)->execute([$fn, $ln, $email, $phone, $position, $years, $skills, $portfolio, $id]);
 }
 
 function deleteApplication($pdo, $id) {
