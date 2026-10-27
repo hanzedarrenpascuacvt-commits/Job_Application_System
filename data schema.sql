@@ -10,5 +10,6 @@ CREATE TABLE applications (
     position_applied VARCHAR(50) NOT NULL,
     years_experience INT DEFAULT 0,
     skills VARCHAR(255),
+    portfolio VARCHAR(255),
     date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
